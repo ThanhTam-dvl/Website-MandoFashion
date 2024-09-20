@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="837d336a64e34e3abcb68bfc56bd2c32" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="mandofashion_dbModel.AnhSanPham" Width="1.5" PointX="5.625" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mandofashion_dbModel.BaiViet" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mandofashion_dbModel.ChiTietDH" Width="1.5" PointX="8" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mandofashion_dbModel.DonHang" Width="1.5" PointX="5.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mandofashion_dbModel.KhachHang" Width="1.5" PointX="7.625" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mandofashion_dbModel.LoaiSP" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mandofashion_dbModel.SanPham" Width="1.5" PointX="3.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="mandofashion_dbModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="mandofashion_dbModel.FK__AnhSanPham__MaSP__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="mandofashion_dbModel.FK__BaiViet__LuotXem__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="mandofashion_dbModel.FK__ChiTietDH__MaDH__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="mandofashion_dbModel.FK__ChiTietDH__MaSP__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="mandofashion_dbModel.FK__DonHang__GhiChu__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="mandofashion_dbModel.FK__DonHang__TaiKhoa__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="mandofashion_dbModel.FK_SanPham_LoaiSP" ManuallyRouted="false" />
+        <AssociationConnector Association="mandofashion_dbModel.FK__SanPham__TaiKhoa__6FE99F9F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

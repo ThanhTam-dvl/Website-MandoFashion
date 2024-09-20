@@ -1,0 +1,390 @@
+﻿@using mandofashion.Models
+@{ ViewBag.Title = "Index"; }
+
+<div id="layout-cart">
+    <div class="container-fluid">
+
+        <div class="row pd-page">
+            <div class="col-md-12 col-xs-12 heading-page">
+                <div class="header-page">
+                    <h1>Giỏ hàng của bạn</h1>
+                </div>
+            </div>
+
+            @{
+                if (Session["Cart"] != null)
+                {
+                    using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
+                    {
+                        <div class="col-md-12 col-xs-12 wrapbox-content-cart">
+
+                            <div class="cart-container">
+                                <div class="cart-col-left">
+                                    <div class="main-content-cart">
+                                        <form action="/cart" method="post" id="cartformpage">
+                                            <div class="row">
+                                                @foreach (var cart in (List<Cart>)Session["Cart"])
+                                                {
+                                                    double p = Convert.ToDouble(cart.SanPham.GiaBan);
+                                                    int q = Convert.ToInt32(cart.SoLuong);
+                                                    double subtotal = p * q;
+
+                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <table class="table-cart">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="image">&nbsp;</th>
+                                                                    <th class="item">Tên sản phẩm</th>
+                                                                    <th class="remove">&nbsp;</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                <tr class="line-item-container" data-variant-id="1105297323">
+                                                                    <td class="image">
+                                                                        <div class="product_image">
+                                                                            <a href="#">
+                                                                                <img src=" ~/images/products/@cart.SanPham.DuongDanAnh " alt="@cart.SanPham.TenSP" />
+                                                                            </a>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="item">
+                                                                        <a href="#">
+                                                                            <h3>@cart.SanPham.TenSP</h3>
+                                                                        </a>
+
+                                                                        <h4>@Html.FormatValue(cart.SanPham.GiaBan, null)₫</h4>
+
+                                                                        @*<p class="variant">
+
+                                                                                <span class="variant_title">Đen / L</span>
+
+                                                                            </p>*@
+                                                                        <div class="qty quantity-partent qty-click clearfix">
+                                                                            <input type="text" name="soLuong" data-price="@cart.SanPham.GiaBan" value="@cart.SoLuong" class="tc line-item-qty item-quantity" />
+                                                                        </div>
+                                                                        <p class="price">
+                                                                            <span class="text">Thành tiền:</span>
+                                                                            @*<span class="line-item-total">@Html.FormatValue(subtotal, "{ 0:C }")</span>*@
+                                                                        </p>
+                                                                    </td>
+                                                                    <td class="remove">
+                                                                        <a href="@Url.Action("RemoveItem", "ShoppingCart", new { Id = cart.SanPham.MaSP })" class="cart">
+                                                                            <img src="~/images/home/ic_close.png" />
+                                                                        </a>
+                                                                        @*@Html.ActionLink("~/images/home/ic_close.png", "RemoveItem", "ShoppingCart", new { Id = cart.SanPham.MaSP })*@
+                                                                        @*<a href="/cart/change?line=1&quantity=0" class="cart">
+                                                                                <img src="~/images/home/ic_close.png" />
+                                                                            </a>*@
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                }
+                                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="checkout-note clearfix">
+                                                        <textarea id="note" name="note" rows="8" cols="50" placeholder="Ghi chú"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 col-xs-12 text-right">
+                                                    @{
+                                                        List<Cart> temp = (List<Cart>)Session["Cart"];
+                                                        var total = temp.Sum(x => x.SoLuong * x.SanPham.GiaBan);
+                                                    }
+                                                    <p class="order-infor">
+                                                        Tổng tiền:
+                                                        <span class="total_price">@Html.FormatValue(total, null)₫</span>
+                                                        @*<span class="total_price"><b>168,000₫</b></span>*@
+                                                    </p>
+
+                                                    <div class="cart-buttons">
+                                                        <a class="button dark link-continue" href="@Url.Action("Index","Product")" title="Tiếp tục mua hàng"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
+                                                        &nbsp;<button type="submit" id="update-cart" class="btn-update button dark" name="update" value="Update Cart">Cập nhật</button>
+                                                        <button type="submit" id="checkout" class="btn-checkout button dark" name="checkout" value="">&nbsp;@Html.ActionLink("Thanh toán", "CheckOut", "ShoppingCart")</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h4>Không có sản phẩm nào trong giỏ hàng</h4>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function)() {
+        $(".quantity").keypress(function)(e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Enter digits only!").show().fadeOut("slow");
+                return false;
+            }
+        };
+    };
+</script>
+
+<!--<div id="layout-cart">
+<div class="container-fluid">
+
+    <div class="row pd-page">
+        <div class="col-md-12 col-xs-12 heading-page">
+            <div class="header-page">
+                <h1>Giỏ hàng của bạn</h1>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-12 col-xs-12 wrapbox-content-cart">
+
+            <div class="cart-container">
+                <div class="cart-col-left">
+                    <div class="main-content-cart">
+                        <form action="/cart" method="post" id="cartformpage">
+                            <div class="row">
+
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <table class="table-cart">
+                                        <thead>
+                                            <tr>
+                                                <th class="image">&nbsp;</th>
+                                                <th class="item">Tên sản phẩm</th>
+                                                <th class="remove">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr class="line-item-container" data-variant-id="1105297323">
+                                                <td class="image">
+                                                    <div class="product_image">
+                                                        <a href="/products/ao-polo-nam-co-chu-v-khong-cuc-mando-chat-lieu-ca-sau-tc-co-hinh-theu-nguc-phong-cach-han-quoc-pol009">
+                                                            <img src="  //product.hstatic.net/1000401164/product/upload_acddc99b033d496fab37dcb020caf2f1_medium.jpg " alt="Áo Polo Nam Cổ Chữ V Không Cúc MANDO Chất Liệu Cá Sấu TC Có Hình Thêu Ngực Phong Cách Hàn Quốc POL009" />
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td class="item">
+                                                    <a href="/products/ao-polo-nam-co-chu-v-khong-cuc-mando-chat-lieu-ca-sau-tc-co-hinh-theu-nguc-phong-cach-han-quoc-pol009">
+                                                        <h3>Áo Polo Nam Cổ Chữ V Không Cúc MANDO Chất Liệu Cá Sấu TC Có Hình Thêu Ngực Phong Cách Hàn Quốc POL009</h3>
+                                                    </a>
+                                                    <p>
+                                                        <span>168,000₫</span>
+
+                                                        <del>(299,000₫)</del>)
+
+                                                    </p>
+                                                    <p class="variant">
+
+                                                        <span class="variant_title">Đen / L</span>
+
+                                                    </p>
+                                                    <div class="qty quantity-partent qty-click clearfix">
+                                                        <button type="button" class="qtyminus qty-btn">-</button>
+                                                        <input type="text" size="4" name="updates[]" min="1" id="updates_1105297323" data-price="16800000" value="1" class="tc line-item-qty item-quantity" />
+                                                        <button type="button" class="qtyplus qty-btn">+</button>
+                                                    </div>
+                                                    <p class="price">
+                                                        <span class="text">Thành tiền:</span>
+                                                        <span class="line-item-total">168,000₫</span>
+                                                    </p>
+                                                </td>
+                                                <td class="remove">
+                                                    <a href="/cart/change?line=1&quantity=0" class="cart">
+                                                        <img src="//theme.hstatic.net/1000401164/1000509982/14/ic_close.png?v=798" />
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                    <div class="checkout-note clearfix">
+                                        <textarea id="note" name="note" rows="8" cols="50" placeholder="Ghi chú"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 col-xs-12 text-right">
+                                    <p class="order-infor">
+                                        Tổng tiền:
+                                        <span class="total_price"><b>168,000₫</b></span>
+                                    </p>
+                                    <div class="cart-buttons">
+                                        <a class="button dark link-continue" href="@Url.Action("Detail","Detail")" title="Tiếp tục mua hàng"><i class="fa fa-reply"></i>Tiếp tục mua hàng</a>
+                                        <button type="submit" id="update-cart" class="btn-update button dark" name="update" value="">Cập nhật</button>
+                                        <button type="submit" id="checkout" class="btn-checkout button dark" name="checkout" value="">Thanh toán</button>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>-->
+<!-- End cart -->
+<!--</div>
+        </div>
+    </div>
+</div>-->
+<!--
+    <script>
+function log(args) {
+    var str = "";
+    for (var i = 0; i < arguments.length; i++) {
+        if (typeof arguments[i] === "object") {
+            str += JSON.stringify(arguments[i]);
+        } else {
+            str += arguments[i];
+        }
+    }
+    return str;
+}
+function addCommas(str) {
+    var parts = (str + "").split("."),
+            main = parts[0],
+            len = main.length,
+            output = "",
+            i = len - 1;
+
+    while(i >= 0) {
+        output = main.charAt(i) + output;
+        if ((len - i) % 3 === 0 && i > 0) {
+            output = "," + output;
+        }
+        --i;
+    }
+    // put decimal part back
+    if (parts.length > 1) {
+        output += "," + parts[1];
+    }
+    return output;
+}
+;(function ( $, window, document, undefined ) {
+    var pluginName = 'hrvAJAXCart',
+            defaults = {
+                propertyName: "value"
+            };
+    function Plugin( element, options ) {
+        this.element = element;
+        this.options = $.extend( {}, defaults, options );
+        this._defaults = defaults;
+        this._name = 'hrvAJAXCart';
+        this.init();
+    }
+    Plugin.prototype = {
+        init: function() {
+            var item = this.options.item,
+                    item_total = this.options.item_total,
+                    item_qty = this.options.item_qty,
+                    subtotal = $(this.options.subtotal);
+
+            // Change line item quantity
+            $(item_qty).change(function() {
+                var qty = $(this).val(),
+                        this_item = $(this).closest(item),
+                        variant_id = this_item.data('variant-id'),
+                        this_item_total = this_item.find(item_total);
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart/change.js',
+                    dataType: 'json',
+                    data: {
+                        quantity: qty,
+                        id: variant_id
+                    },
+                    success: function(cart) {
+                        if ( qty == 0 ) {
+                            this_item.remove();
+                        } else {
+                            $.each(cart.items,function(index,row) {
+                                var price = parseFloat(row.line_price / 100).toFixed(2);
+                                var currency = Number(price.replace(/[^0-9\.-]+/g,""));
+                                if ( variant_id == row.variant_id ) this_item_total.html( log(addCommas(currency)) + ' đ' );
+                            });
+                        }
+                        var sub_price = parseFloat(cart.total_price / 100).toFixed(2);
+                        sub_price = Number(sub_price.replace(/[^0-9\.-]+/g,""));
+                        subtotal.html( log(addCommas(sub_price)) + ' đ' );
+                    },
+                    error: function(response) {
+                        alert(response);
+                    }
+                });
+            });
+
+            // Remove line item
+            $(this.options.item_remove).click(function(e) {
+                e.preventDefault();
+                $(this).closest(item).find(item_qty).val(0);
+                $(this).closest(item).find(item_qty).trigger('change');
+            });
+        }
+    };
+    $.fn.hrvAJAXCart = function ( options ) {
+        return this.each(function () {
+            if (!$.data(this, "plugin_" + pluginName)) {
+                $.data(this, "plugin_" + pluginName, new Plugin( this, options ));
+            }
+        });
+    };
+})( jQuery, window, document );
+    </script>
+    <script>
+$('.qty-click .qtyplus').on('click',function(e){
+    e.preventDefault();
+    var input = $(this).parent('.quantity-partent').find('input');
+    var currentVal = parseInt(input.val());
+    if (!isNaN(currentVal)) {
+        input.val(currentVal + 1);
+    } else {
+        input.val(1);
+    }
+    Update_price_change();
+});
+$(".qty-click .qtyminus").on('click',function(e) {
+    e.preventDefault();
+    var input = $(this).parent('.quantity-partent').find('input');
+    var currentVal = parseInt(input.val());
+    if (!isNaN(currentVal) && currentVal > 1) {
+        input.val(currentVal - 1);
+    } else {
+        input.val(1);
+    }
+    Update_price_change();
+});
+function Update_price_change(){
+    var params = {
+        type: 'POST',
+        url: '/cart/update.js',
+        data: $('#cartformpage').serialize(),
+        async: false,
+        dataType: 'json',
+        success: function(data) {
+            $.each(data.items,function(i,v){
+                $('.table-cart tbody tr:eq('+i+') .line-item-total').html(Haravan.formatMoney(v.line_price, "{{amount}}₫"));
+            });
+            $('.total_price').html(Haravan.formatMoney(data.total_price, "{{amount}}₫"));
+            $('.count-cart').html('Có ' + '<span>' + data.item_count + ' sản phẩm </span>' + 'trong giỏ hàng');
+        },
+        error: function(XMLHttpRequest, textStatus) {
+            Haravan.onError(XMLHttpRequest, textStatus);
+        }
+    };
+    jQuery.ajax(params);
+}
+    </script>
+-->

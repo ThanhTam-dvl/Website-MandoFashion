@@ -1,0 +1,144 @@
+﻿
+<main class="">
+    <div class="pageAbout-us page-layout">
+        <div class="container-fluid">
+            <div class="row breadcrumb-shop">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5  ">
+                    <ol class="breadcrumb breadcrumb-arrows" itemscope itemtype="http://schema.org/BreadcrumbList">
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            @Html.ActionLink("Trang chủ", "Index", "Home")
+                            <meta itemprop="position" content="1" />
+                        </li>
+
+                        <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <span itemprop="item" content="https://mandofashion.vn/pages/about-us"><span itemprop="name">Giới thiệu</span></span>
+                            <meta itemprop="position" content="2" />
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+            <div class="row wrapper-row pd-page">
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="sidebar-page">
+
+                        <div class="group-menu">
+                            <div class="page_menu_title title_block">
+                                <h2>Danh mục trang</h2>
+                            </div>
+                            <div class="layered layered-category">
+                                <div class="layered-content">
+                                    <ul class="tree-menu">
+
+                                        <li class="">
+                                            <span></span>
+                                            @Html.ActionLink("Trang chủ", "Index", "Home")
+                                        </li>
+
+                                        <li class="active">
+                                            <span></span>
+                                            @Html.ActionLink("Giới thiệu", "About", "Home")
+                                        </li>
+
+                                        <li class="tree-menu-lv1 has-child  menu-collap ">
+                                            <a title="Danh Mục" target="_self">
+                                                <span class="">Danh Mục</span>
+                                                <span class="icon-control"><i class="fa fa-minus"></i></span>
+                                            </a>
+                                            <ul class="tree-menu-sub">
+
+                                                @Html.Partial("_ListCategories")
+
+                                            </ul>
+                                        </li>
+
+
+
+                                        <li class="">
+                                            <span></span>
+                                            <a class="" href="@Url.Action("Index", "Product", new { maLoai = 6})" title="SẢN PHẨM MỚI 2023" target="_self">
+                                                SẢN PHẨM MỚI 2023
+                                            </a>
+                                        </li>
+
+
+
+                                        <li class="">
+                                            <span></span>
+                                            <a class="" href="@Url.Action("Index", "Product", new { maLoai = 7})" title="BLACK FRIDAY 2023 - SALE 70%" target="_self">
+                                                BLACK FRIDAY 2023 - SALE 70%
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="box_image visible-lg visible-md">
+                            <div class="banner">
+                                <a href="/">
+                                    <img src="//theme.hstatic.net/1000401164/1000509982/14/page_banner.jpg?v=798" alt="Thời trang MANDO">
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    <div class="page-wrapper">
+                        <div class="heading-page">
+                            <h1>Giới thiệu</h1>
+                        </div>
+                        <div class="wrapbox-content-page">
+                            <div class="content-page ">
+                                <p> </p>
+                                <h1>MANDO XIN CHÀO CÁC CẬU!</h1>
+                                <p>
+                                    MANDO là&nbsp;thương hiệu thời trang nam dành cho giới trẻ theo phong cách Hàn Quốc. Được thành lập tới nay được 6 năm, MANDO đã và đang dần trở thành một người bạn gần gũi, tin cậy và đầy mới mẻ của giới trẻ Việt
+                                    trong câu chuyện ăn mặc, với Fanpage Facebook đạt gần 450.000 lượt thích, group fan cứng hơn&nbsp;18.000&nbsp;thành viên, kênh Tiktok gần 250.000&nbsp;lượt folllow.
+                                </p>
+                                <p style="text-align: center"><img src="//file.hstatic.net/1000401164/file/164330867_3945265898846126_6220307982289622040_n_7cf9484ee8564e7d97e1af4cf36c7acd_grande.jpg"></p>
+                                <p>
+                                    <br>MANDO mang đến những bộ trang phục cho khách hàng trẻ có lối sống năng động, hiện đại, thích trải nghiệm, lạc quan từ bên trong tâm hồn, phong cách sống lẫn gu ăn mặc. Khi mặc những sản phẩm của MANDO, quan
+                                    trọng nhất là các cậu vui vẻ, thoải mái được là chính mình theo đuổi những điều mình mong muốn.&nbsp;
+                                </p>
+                                <p style="text-align: center"><img src="//file.hstatic.net/1000401164/file/95795878_3029910353715023_2832812999394197504_n_b877cf0d2bdb4b19b823b5aa36af489e_grande.jpg"></p>
+                                <p><span style="font-size: 15pt;"><strong>MANDO nổi bật với:</strong></span>&nbsp;</p>
+                                <p>1. Sự đa dạng: Với đầy đủ các sản phẩm từ quần áo tới các loại phụ kiện từ đầu đến chân, với nhiều dòng sản phẩm đáp ứng được cả nhu cầu đi học, đi chơi, đi làm.&nbsp;</p>
+                                <p>2. Sự mới mẻ: MANDO ra mắt các Bộ sưu tập sản phẩm mới liên tục trong tháng.&nbsp;</p>
+                                <p>3. Giá cả hợp lý với chất lượng, phù hợp cho các bạn học sinh, sinh viên.</p>
+                                <p style="text-align: center"><img src="//file.hstatic.net/1000401164/file/118648845_3354189847953737_556367114698651864_n_25835bb2321c4b54b814daa11e7fce95_grande.jpg"></p>
+                                <p><span style="font-size: 15pt;"><strong>CAM KẾT MUA HÀNG TẠI MANDO</strong></span></p>
+                                <p>Hỗ trợ đổi hàng trong 7 ngày</p>
+                                <p>Giao hàng nhanh chóng, nhận hàng được kiểm tra hàng trước khi thanh toán</p>
+                                <p>Có hình ảnh thật 100% giống mô tả&nbsp;</p>
+                                <p>Đặt hàng nhanh chóng, tư vấn nhiệt tình&nbsp;</p>
+                                <p> </p>
+                                <p><span style="font-size: 15pt;"><strong>MỘT SỐ HÌNH ẢNH TẠI CỬA HÀNG</strong></span></p>
+                                <p style="text-align: center"><img src="//file.hstatic.net/1000401164/file/imgl2148_4e88c86715c349c39cb7ddf90b0f6d99_grande.jpg"></p>
+                                <p style="text-align: center"><img src="//file.hstatic.net/1000401164/file/101410481_3101712673201457_3906403284063092736_o_8ed5805b385d435ea22d389df02fb41d_grande.jpg"></p>
+                                <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strong></p>
+                                <p style="text-align: center"><img src="//file.hstatic.net/1000401164/file/imgl2949_9ffeb9c0f3db4314a3c36095f87ba672_grande.jpg"></p>
+                                <p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></p>
+                                <p>Các bạn tại Hà Nội có thể qua mua hàng tại 3 cơ sở của MANDO, ngoài ra có thể đặt hàng online tại Fanpage, website và các gian hàng chính thức của MANDO trên Shopee và Lazada.</p>
+                                <p style="text-align: center"><img src="//file.hstatic.net/1000401164/file/123000823_3544543412251712_5956680877647290412_n_d517e3788979445cac87c15dc55e8d52_grande.jpg"></p>
+                                <p><strong>LIÊN HỆ CHĂM SÓC KHÁCH HÀNG</strong></p>
+                                <ul>
+                                    <li><b>Công ty TNHH Đầu tư và Phát triển Mando</b></li>
+                                    <li>Email: cskh@mandofashion.vn</li>
+                                    <li>Hotline: 0948541032</li>
+                                    <li>Fanpage:&nbsp;<a href="https://www.facebook.com/Mandofashion.vn/">https://www.facebook.com/Mandofashion.vn/</a></li>
+                                </ul>
+                                <p> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

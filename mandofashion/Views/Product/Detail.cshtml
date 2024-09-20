@@ -1,0 +1,316 @@
+﻿@model mandofashion.Models.SanPham
+    @{ 
+        ViewBag.Title = "Detail";
+    }
+
+<div id="product" class="productDetail-page">
+    <div class="container-fluid">
+
+
+        <div class="row product-detail-wrapper">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                
+                <div class="row product-detail-main pr_style_01">
+                    <!-- image sp Start -->
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        <div class="product-gallery">
+                            <!-- list image left Start -->
+                            <div class="product-gallery__thumbs-container hidden-sm hidden-xs">
+                                <div class="product-gallery__thumbs thumb-fix">
+
+                                    <div class="product-gallery__thumb active">
+                                        <a class="product-gallery__thumb-placeholder" href="javascript:void(0);">
+                                            <img alt=" @Model.TenSP " src="~/images/products/@Model.DuongDanAnh" data-image="~/images/products/@Model.DuongDanAnh" />
+                                        </a>
+                                    </div>
+
+                                    <div class="product-gallery__thumb ">
+                                        <a class="product-gallery__thumb-placeholder" href="javascript:void(0);">
+                                            <img alt=" @Model.TenSP " src="~/images/products/@Model.DuongDanAnh1" data-image="~/images/products/@Model.DuongDanAnh1" />
+                                        </a>
+                                    </div>
+
+                                    <div class="product-gallery__thumb ">
+                                        <a class="product-gallery__thumb-placeholder" href="javascript:void(0);">
+                                            <img alt=" @Model.TenSP " src="~/images/products/@Model.DuongDanAnh2" data-image="~/images/products/@Model.DuongDanAnh2" />
+                                        </a>
+                                    </div>
+
+                                    <div class="product-gallery__thumb ">
+                                        <a class="product-gallery__thumb-placeholder" href="javascript:void(0);">
+                                            <img alt=" @Model.TenSP " src="~/images/products/@Model.DuongDanAnh3" data-image="~/images/products/@Model.DuongDanAnh3" />
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- list image left End -->
+                            <!-- list image right Start -->
+                            <div class="product-image-detail box__product-gallery scroll">
+                                <ul id="sliderproduct" class="site-box-content slide_product">
+
+                                    <li class="product-gallery-item gallery-item">
+                                        <img class="product-image-feature" src="~/images/products/@Model.DuongDanAnh" alt=" @Model.TenSP ">
+                                    </li>
+
+                                    <li class="product-gallery-item gallery-item">
+                                        <img class="product-image-feature" src="~/images/products/@Model.DuongDanAnh1" alt=" @Model.TenSP ">
+                                    </li>
+
+                                    <li class="product-gallery-item gallery-item">
+                                        <img class="product-image-feature" src="~/images/products/@Model.DuongDanAnh2" alt=" @Model.TenSP ">
+                                    </li>
+
+                                    <li class="product-gallery-item gallery-item">
+                                        <img class="product-image-feature" src="~/images/products/@Model.DuongDanAnh3" alt=" @Model.TenSP ">
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                            <!-- list image right End -->
+                        </div>
+                    </div>
+                    <!-- image sp End -->
+
+                    <!-- Thông tin sp Start -->
+                    <div class="col-md-4 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
+                        <div class="product-title">
+                            <h1>@Model.TenSP</h1>
+
+                            <span id="pro_sku"><strong>SKU:</strong> POL003103</span>
+
+                        </div>
+                        <div class="product-price" id="price-preview">
+
+                            <span class="pro-price">@Model.GiaBan₫</span>
+
+                        </div>
+
+
+                        <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
+                            <div class="select clearfix">
+                                <select id="product-select" name="id" style="display:none;">
+
+                                    <option value="1102317229">Trắng / XL - @Model.GiaBan₫</option>
+
+                                    <option value="1102317230">Trắng / XXL - @Model.GiaBan₫</option>
+
+                                    <option value="1102317231">Đen / M - @Model.GiaBan₫</option>
+
+                                    <option value="1102317232">Đen / L - @Model.GiaBan₫</option>
+
+                                    <option value="1102317233">Đen / XL - @Model.GiaBan₫</option>
+
+                                    <option value="1102317234">Đen / XXL - @Model.GiaBan₫</option>
+
+                                    <option value="1102317239">Trắng / M - @Model.GiaBan₫</option>
+
+                                    <option value="1102317240">Trắng / L - @Model.GiaBan₫</option>
+
+                                </select>
+                            </div>
+                            <div class="select-swatch clearfix">
+
+                                <div id="variant-swatch-0" class="swatch clearfix" data-option="option1" data-option-index="0">
+                                    <div class="header">Màu sắc:</div>
+
+                                    <div class="select-swap">
+
+                                        <div data-value="Trắng" class="n-sd swatch-element trang  ">
+                                            <input class="variant-0" id="swatch-0-trang" type="radio" name="option1" value="Trắng" data-vhandle="trang" checked />
+
+                                            <label for="swatch-0-trang">
+                                                <span>Trắng</span>
+                                            </label>
+
+                                        </div>
+                                        <div data-value="Đen" class="n-sd swatch-element den  ">
+                                            <input class="variant-0" id="swatch-0-den" type="radio" name="option1" value="Đen" data-vhandle="den" />
+
+                                            <label for="swatch-0-den">
+                                                <span>Đen</span>
+                                            </label>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div id="variant-swatch-1" class="swatch clearfix" data-option="option2" data-option-index="1">
+                                    <div class="header">Kích thước:</div>
+
+                                    <div class="select-swap">
+
+                                        <div data-value="XL" class="n-sd swatch-element xl  ">
+                                            <input class="variant-1" id="swatch-1-xl" type="radio" name="option2" value="XL" data-vhandle="xl" checked />
+
+                                            <label for="swatch-1-xl">
+                                                <span>XL</span>
+                                            </label>
+
+                                        </div>
+
+                                        <div data-value="XXL" class="n-sd swatch-element xxl  ">
+                                            <input class="variant-1" id="swatch-1-xxl" type="radio" name="option2" value="XXL" data-vhandle="xxl" />
+
+                                            <label for="swatch-1-xxl">
+                                                <span>XXL</span>
+                                            </label>
+
+                                        </div>
+                                        <div data-value="M" class="n-sd swatch-element m  ">
+                                            <input class="variant-1" id="swatch-1-m" type="radio" name="option2" value="M" data-vhandle="m" />
+
+                                            <label for="swatch-1-m">
+                                                <span>M</span>
+                                            </label>
+
+                                        </div>
+
+                                        <div data-value="L" class="n-sd swatch-element l  ">
+                                            <input class="variant-1" id="swatch-1-l" type="radio" name="option2" value="L" data-vhandle="l" />
+
+
+                                            <label for="swatch-1-l">
+                                                <span>L</span>
+                                            </label>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="selector-actions">
+                                <div class="quantity-area clearfix">
+                                    <input type="button" value="-" onclick="minusQuantity()" class="qty-btn">
+                                    <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                                    <input type="button" value="+" onclick="plusQuantity()" class="qty-btn">
+                                </div>
+                                <div class="wrap-addcart clearfix">
+                                    <button type="button" id="add-to-cart" class=" add-to-cartProduct button dark btn-addtocart addtocart-modal" name="add">
+                                        @Html.ActionLink("Thêm vào giỏ", "Index", "ShoppingCart", new { Id = Model.MaSP}, null)
+                                    </button>
+                                </div>
+                            </div>
+                            
+                                <div class="product-action-bottom visible-xs">
+                                <div class="input-bottom">
+                                    <input id="quan-input" type="number" value="1" min="1">
+                                </div>
+                                <button type="button" id="add-to-cartbottom" class=" add-to-cartProduct add-cart-bottom button dark addtocart-modal" name="add">
+                                    @Html.ActionLink("Thêm vào giỏ", "Index", "ShoppingCart", new { Id = Model.MaSP}, null)
+                                </button>
+                            </div>
+                                
+                        </form>
+                        
+                    </div>
+                    <!-- Thông tin sp End -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    jQuery(document).on('click', '#add-item-form .swatch input', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var _available = '';
+        $this.parent().siblings().find('label').removeClass('sd');
+        $this.next().addClass('sd');
+        var name = $this.attr('name');
+        var value = $this.val();
+        $('#add-item-form select[data-option=' + name + ']').val(value).trigger('change');
+        if (swatch_size == 2) {
+            if (name.indexOf('1') != -1) {
+                $('#add-item-form #variant-swatch-1 .swatch-element').find('input').prop('disabled', false);
+                $('#add-item-form #variant-swatch-2 .swatch-element').find('input').prop('disabled', false);
+                $('#add-item-form #variant-swatch-1 .swatch-element label').removeClass('sd');
+                $('#add-item-form #variant-swatch-1 .swatch-element').removeClass('soldout');
+                $('#add-item-form .selector-wrapper .single-option-selector').eq(1).find('option').each(function () {
+                    var _tam = $(this).val();
+                    $(this).parent().val(_tam).trigger('change');
+                    if (check_variant) {
+                        if (_available == '') {
+                            _available = _tam;
+                        }
+                    } else {
+                        $('#add-item-form #variant-swatch-1 .swatch-element[data-value="' + _tam + '"]').addClass('soldout');
+                        $('#add-item-form #variant-swatch-1 .swatch-element[data-value="' + _tam + '"]').find('input').prop('disabled', true);
+                    }
+                })
+                $('#add-item-form .selector-wrapper .single-option-selector').eq(1).val(_available).trigger('change');
+                $('#add-item-form #variant-swatch-1 .swatch-element[data-value="' + _available + '"] label').addClass('sd');
+            }
+        } else if (swatch_size == 3) {
+            var _count_op2 = $('#add-item-form #variant-swatch-1 .swatch-element').size();
+            var _count_op3 = $('#add-item-form #variant-swatch-2 .swatch-element').size();
+            if (name.indexOf('1') != -1) {
+                $('#add-item-form #variant-swatch-1 .swatch-element').find('input').prop('disabled', false);
+                $('#add-item-form #variant-swatch-2 .swatch-element').find('input').prop('disabled', false);
+                $('#add-item-form #variant-swatch-1 .swatch-element label').removeClass('sd');
+                $('#add-item-form #variant-swatch-1 .swatch-element').removeClass('soldout');
+                $('#add-item-form #variant-swatch-2 .swatch-element label').removeClass('sd');
+                $('#add-item-form #variant-swatch-2 .swatch-element').removeClass('soldout');
+                var _avi_op1 = '';
+                var _avi_op2 = '';
+                $('#add-item-form #variant-swatch-1 .swatch-element').each(function (ind, value) {
+                    var _key = $(this).data('value');
+                    var _unavi = 0;
+                    $('#add-item-form .single-option-selector').eq(1).val(_key).change();
+                    $('#add-item-form #variant-swatch-2 .swatch-element label').removeClass('sd');
+                    $('#add-item-form #variant-swatch-2 .swatch-element').removeClass('soldout');
+                    $('#add-item-form #variant-swatch-2 .swatch-element').find('input').prop('disabled', false);
+                    $('#add-item-form #variant-swatch-2 .swatch-element').each(function (i, v) {
+                        var _val = $(this).data('value');
+                        $('#add-item-form .single-option-selector').eq(2).val(_val).change();
+                        if (check_variant == true) {
+                            if (_avi_op1 == '') {
+                                _avi_op1 = _key;
+                            }
+                            if (_avi_op2 == '') {
+                                _avi_op2 = _val;
+                            }
+                            //console.log(_avi_op1 + ' -- ' + _avi_op2)
+                        } else {
+                            _unavi += 1;
+                        }
+                    })
+                    if (_unavi == _count_op3) {
+                        $('#add-item-form #variant-swatch-1 .swatch-element[data-value = "' + _key + '"]').addClass('soldout');
+                        setTimeout(function () {
+                            $('#add-item-form #variant-swatch-1 .swatch-element[data-value = "' + _key + '"] input').attr('disabled', 'disabled');
+                        })
+                    }
+                })
+                $('#add-item-form #variant-swatch-1 .swatch-element[data-value="' + _avi_op1 + '"] input').click();
+            } else if (name.indexOf('2') != -1) {
+                $('#add-item-form #variant-swatch-2 .swatch-element label').removeClass('sd');
+                $('#add-item-form #variant-swatch-2 .swatch-element').removeClass('soldout');
+                $('#add-item-form .selector-wrapper .single-option-selector').eq(2).find('option').each(function () {
+                    var _tam = $(this).val();
+                    $(this).parent().val(_tam).trigger('change');
+                    if (check_variant) {
+                        if (_available == '') {
+                            _available = _tam;
+                        }
+                    } else {
+                        $('#add-item-form #variant-swatch-2 .swatch-element[data-value="' + _tam + '"]').addClass('soldout');
+                        $('#add-item-form #variant-swatch-2 .swatch-element[data-value="' + _tam + '"]').find('input').prop('disabled', true);
+                    }
+                })
+                $('#add-item-form .selector-wrapper .single-option-selector').eq(2).val(_available).trigger('change');
+                $('#add-item-form #variant-swatch-2 .swatch-element[data-value="' + _available + '"] label').addClass('sd');
+            }
+        } else {
+
+        }
+    })
+</script>

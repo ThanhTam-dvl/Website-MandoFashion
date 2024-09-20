@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html>
+<html amp class="no-js flexbox" lang="vi" >
+<head>
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+    <!--[if lt IE 9]><script src="//hsta tic.net/0/0/global/design/theme-default/html5shiv.js"></script><![endif]-->
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="revisit-after" content="1 day" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="HandheldFriendly" content="true">
+    <link rel="shortcut icon" href="~/images/home/favicon.png" >
+    <title>
+        MANDO BRAND &#174; &ndash; Thời trang MANDO
+    </title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/style2.css">
+    <link rel="stylesheet" href="~/css/style_checkout.css" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com/">
+    <script defer src='https://stats.hstatic.net/beacon.min.js?' hrv-beacon-t='1000401164'></script>
+    <!-- jS -->
+    <script src="~/js/home.js"></script>
+    <script src="~/js/widget.js"></script>    <!-- harafunnel -->
+    <script src="~/js/googletagmanager.js"></script>    <!-- Google tag (gtag.js) -->
+    <script src="~/js/jquery.js" type="text/javascript"></script>
+    <script src="~/js/text.js" type="text/javascript"></script>
+    <script src="~/js/14_plugins.js"></script>
+    <script src="~/js/14_scripts.js"></script>
+    <script src="~/js/checkout.js"></script>
+    <!-- SEO META DESCRIPTION -->
+    <meta name="description" content="" />
+    <!-- END SEO META DESCRIPTION -->
+
+</head>
+<body id="lama-theme" class="index">
+    <div class="main-body">
+        <!-- Header start -->
+        <header id="site-header" class="main-header">
+            <div class="header-mid wrap-flex-align">
+                <div class="visible-lg visible-md col-header-mid"></div>
+                <div class="wrap-logo" itemscope="" itemtype="http://schema.org/Organization">
+                    <a href="#" itemprop="url">
+                        <img itemprop="logo" src="~/images/home/logo.png" alt="Thời trang MANDO" class="img-responsive logoimg" />
+                    </a>
+                </div>
+                <div class="header-wrap-icon">
+                    <span class="icon-account" aria-label="Tài khoản" title="Tài khoản"></span>
+                    <span id="site-search-handle" class="icon-search" aria-label="Tìm kiếm" title="Tìm kiếm">
+                        <a href="#">
+                            <span class="search-menu" aria-hidden="true">
+                                <svg version="1.1" class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
+                                <path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z" />
+                                <rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8" />
+						        </svg>
+                            </span>
+                        </a>
+                    </span>
+                    <span id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
+                        <a href="#">
+                            <span class="cart-menu" aria-hidden="true">
+                                <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
+                                <g><path d="M0,6v21h24V6H0z M22,25H2V8h20V25z" /></g>
+                                <g><path d="M12,2c3,0,3,2.3,3,4h2c0-2.8-1-6-5-6S7,3.2,7,6h2C9,4.3,9,2,12,2z" /></g>
+						        </svg>
+                                <span class="count-holder"><span class="count">0</span></span>
+                            </span>
+                        </a>
+                    </span>
+                    <span id="site-menu-handle" class="hamburger-menu visible-sm visible-xs" aria-hidden="true"><span class="bar"></span></span>
+                </div>
+            </div>
+            <div class="menu-desktop hidden-sm hidden-xs">
+                <div class="wrap-logo wrap-logp-mb">
+                    <a href="#">
+                        <img src="~/images/home/logo.png" alt="Thời trang MANDO" class="img-responsive logoimg" />
+                    </a>
+                </div>
+                <div id="nav">
+                    <nav class="main-nav text-center">
+                        <ul class="clearfix">
+                            <li class="active ">
+                                @Html.ActionLink("Trang chủ", "Index", "Home")
+                            </li>
+                            <li class=" ">
+                                @Html.ActionLink("Giới thiệu", "About", "Home")
+                            </li>
+                            <li class="active">
+                                <a href="#" title="Danh Mục">Danh Mục<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                                <ul class="sub_menu">
+                                    @Html.Partial("_ListCategories")
+                                </ul>
+                            </li>
+                            <li class=" ">
+                                <a href="@Url.Action("Index", "Product", new { maLoai = 5})" title="SẢN PHẨM MỚI 2024">SẢN PHẨM MỚI 2024</a>
+                            </li>
+                            <li class="hightlight ">
+                                <a href="@Url.Action("Index", "Product", new { maLoai = 4})" title="BLACK FRIDAY 2024 - SALE 70%">BLACK FRIDAY 2024 - SALE 70%</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    
+                    </div>
+
+                    @*<div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @Html.ActionLink("Employee Portal", "Index", "Employees", new { area = "" }, new { @class = "navbar-brand" })
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>@Html.ActionLink("Get Employee List", "Index", "Employees")</li>
+                                    <li>@Html.ActionLink("Get Employee", "Create", "Employees")</li>
+                                    <li><a>Hello - @User.Identity.Name</a></li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "Accounts")</li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Login", "Login", "Acounnts")</li>
+                                }
+                            </ul>
+                        </div>
+
+
+                    </div>*@
+
+            </div>
+        </header>
+        <!-- Header end -->
+        <div class="search-bar-mobile">
+            <div class="search-box wpo-wrapper-search">
+                <form action="/search" class="searchform searchform-categoris ultimate-search">
+                    <div class="wpo-search-inner">
+                        <input type="hidden" name="type" value="product" />
+                        <input required id="inputSearchAuto-mb" name="q" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm...">
+                    </div>
+                    <button type="submit" class="btn-search btn" id="search-header-btn-mb">
+                        <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"><path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path><rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
+                    </button>
+                </form>
+                <div id="ajaxSearchResults-mb" class="smart-search-wrapper ajaxSearchResults" style="display: none">
+                    <div class="resultsContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <main class="main-index">
+            @RenderBody();
+        </main>
+
+        <!-- Footer Start -->
+        <footer class="footer  ">
+            <div class="top-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-8">
+                            <div class="area_newsletter">
+                                <div class="title_newsletter">
+                                    <h4>Đăng kí nhận tin</h4>
+                                </div>
+                                <div class="form_newsletter">
+                                    <form accept-charset='UTF-8' action='/account/contact' class='contact-form' method='post'>
+                                        <input name='form_type' type='hidden' value='customer'>
+                                        <input name='utf8' type='hidden' value='✓'>
+
+                                        <div class="input-group">
+                                            <input type="hidden" id="contact_tags" name="contact[tags]" value="khách hàng tiềm năng, bản tin" />
+                                            <input required type="email" value="" placeholder="Nhập email của bạn" name="contact[email]" aria-label="Email Address">
+                                            <button type="submit" class="button dark">Đăng kí</button>
+                                        </div>
+                                        <input id='4870ddcc200a4f099691caf5fd580348' name='g-recaptcha-response' type='hidden'>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area_phone_contact">
+                                <p class="number_phone">
+                                    <i class="fa fa-phone "></i>
+                                    <span>Hỗ trợ / Mua hàng:</span>
+                                    <a href="tel:0978461032">0978461032</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title-expand visible-xs text-center">
+                <a class="btn-fter" data-toggle="collapse" href="#fter-content" role="button" aria-expanded="true" aria-controls="fter-content">
+                    Thông tin khác<span class="fa fa-angle-down"> </span>
+                </a>
+            </div>
+            <div class="main-footer collapse" id="fter-content">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg">
+                            <div class="footer-col footer-content1">
+                                <h4 class="footer-title">
+                                    Công ty TNHH đầu tư và phát triển Mando
+                                </h4>
+                                <div class="footer-content">
+                                    <p>Thời trang MANDO Mã số doanh nghiệp: 0108403540 do sở Kế hoạch và Đầu tư TP Hà Nội cấp ngày 14/08/2018</p>
+                                    <div class="logo-footer">
+                                        <img src="~/images/home/logo-bct.png" alt="Bộ Công Thương">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg">
+                            <div class="footer-col footer-block">
+                                <h4 class="footer-title">
+                                    Liên kết
+                                </h4>
+                                <div class="footer-content toggle-footer">
+                                    <ul>
+                                        <li class="item">
+                                            <a href="#" title="Tìm kiếm">Tìm kiếm</a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="#" title="Giới thiệu">Giới thiệu</a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="#" title="Chính sách đổi trả">Chính sách đổi trả</a>
+                                        </li>
+                                        <li class="item">
+                                            <a href="#" title="Chính sách bảo mật">Chính sách bảo mật</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg">
+                            <div class="footer-col">
+                                <h4 class="footer-title">Thông tin liên hệ</h4>
+                                <div class="footer-content footer-contact">
+                                    <ul>
+                                        <li class="contact-1">Văn phòng Công ty TNHH Đầu tư và Phát triển Mando - Số 5, ngõ 18, đường Phạm Hùng, phường Mỹ Đình 2, quận Nam Từ Liêm, thành phố Hà Nội, Việt Nam</li>
+                                        <li class="contact-2">0868713558</li>
+                                        <li class="contact-3"></li>
+                                        <li class="contact-4">nguyenthanhtam10062004@gmail.com</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg">
+                            <div class="footer-col">
+                                <h4 class="footer-title">
+                                    Fanpage
+                                </h4>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- Footer End -->
+    </div>
+
+    <!-- Tìm kiếm và Giỏ hàng Start -->
+    <div id="site-nav--mobile" class="site-nav style--sidebar">
+        <div id="site-navigation" class="site-nav-container">
+            <div class="site-nav-container-last">
+                <p class="title">Menu</p>
+                <div class="main-navbar">
+                    <nav class="primary-menu">
+                        <ul class="menu-collection">
+
+
+                            <li class="navi1"><a href="/"><span>Trang chủ</span></a></li>
+
+
+
+                            <li class="navi1"><a href="/pages/about-us"><span>Giới thiệu</span></a></li>
+
+
+
+                            <li class="navi1 has-sub level0">
+                                <a href="/">Danh Mục</a>
+                                <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
+                                <ul class=" submenu subnav-children">
+
+
+                                    <li class="navi2"><a href="/collections/ao-phong-1">POLO</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/so-mi">SHIRT</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/blazer-tay-lo">BLAZER TAY LỠ</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/quan-jeans">QUẦN JEANS</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/quan-au">QUẦN ÂU</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/quan-shorts">QUẦN SHORTS</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/hoodie">HOODIE</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/sweater">SWEATER</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/ao-khoac">ÁO KHOÁC</a></li>
+
+
+
+                                    <li class="navi2"><a href="/collections/blazer-tay-dai">BLAZER DÀI TAY</a></li>
+
+
+                                </ul>
+                            </li>
+
+
+
+                            <li class="navi1"><a href="/collections/bst-dreamy-sunshine-ss23"><span>SẢN PHẨM MỚI 2024</span></a></li>
+
+
+
+                            <li class="navi1"><a href="/collections/back-to-schook-dong-gia-tu-98k"><span>BLACK FRIDAY 2024 - SALE 70%</span></a></li>
+
+
+                        </ul>
+                        <ul class="menu-about">
+
+                            <li><a href="/search"><span>Tìm kiếm</span></a></li>
+
+                            <li><a href="/pages/about-us"><span>Giới thiệu</span></a></li>
+
+                            <li><a href="/pages/chinh-sach-doi-tra"><span>Chính sách đổi trả</span></a></li>
+
+                            <li><a href="/pages/chinh-sach-bao-mat"><span>Chính sách bảo mật</span></a></li>
+
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="to-bottom-content">
+                    <div class="site-copyright">
+                        <p class="copy">Copyright &copy; 2023 <a href="https://mandofashion.vn">Thời trang MANDO</a></p>
+                        <p class="powered"><a target='_blank' href='https://www.haravan.com/?utm_campaign=poweredby&utm_medium=haravan&utm_source=onlinestore'>Powered by Haravan</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="site-cart" class="site-nav-container" tabindex="-1">
+            <div class="site-nav-container-last">
+                <p class="title">Giỏ hàng</p>
+                <div class="cart-view clearfix">
+                    <table id="clone-item-cart" class="table-clone-cart">
+                        <tr class="item_2 hidden">
+                            <td class="img"><a href="" title=""><img src="" alt="" /></a></td>
+                            <td>
+                                <a class="pro-title-view" href="" title=""></a>
+                                <span class="variant"></span>
+                                <span class="pro-quantity-view"></span>
+                                <span class="pro-price-view"></span>
+                                <span class="remove_link remove-cart">
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="cart-view">
+
+
+                        <tr>
+                            <td class="img">
+                                <a href="/products/ao-polo-nam-co-chu-v-khong-cuc-mando-chat-lieu-ca-sau-tc-co-hinh-theu-nguc-phong-cach-han-quoc-pol009">
+                                    <img src=" //product.hstatic.net/1000401164/product/upload_acddc99b033d496fab37dcb020caf2f1_small.jpg " alt="Áo Polo Nam Cổ Chữ V Không Cúc MANDO Chất Liệu Cá Sấu TC Có Hình Thêu Ngực Phong Cách Hàn Quốc POL009" />
+                                </a>
+                            </td>
+                            <td>
+                                <a class="pro-title-view" href="/products/ao-polo-nam-co-chu-v-khong-cuc-mando-chat-lieu-ca-sau-tc-co-hinh-theu-nguc-phong-cach-han-quoc-pol009" title="Áo Polo Nam Cổ Chữ V Không Cúc MANDO Chất Liệu Cá Sấu TC Có Hình Thêu Ngực Phong Cách Hàn Quốc POL009">Áo Polo Nam Cổ Chữ V Không Cúc MANDO Chất Liệu Cá Sấu TC Có Hình Thêu Ngực Phong Cách Hàn Quốc POL009</a>
+                                <span class="variant">
+
+                                    Đen / L
+
+                                </span>
+                                <span class="pro-quantity-view">1</span>
+                                <span class="pro-price-view">168,000₫</span>
+                                <span class="remove_link remove-cart">
+                                    <a href='javascript:void(0);' onclick='deleteCart(1)'><i class='fa fa-times'></i></a>
+                                </span>
+                            </td>
+                        </tr>
+
+
+                    </table>
+                    <span class="line"></span>
+                    <table class="table-total">
+                        <tr>
+                            <td class="text-left">TỔNG TIỀN:</td>
+                            <td class="text-right" id="total-view-cart">168,000₫</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.ActionLink("Xem giỏ hàng", "Index", "ShoppingCart"@*, new { @class = "linktocart button dark" }*@)@*<a href="/cart" class="linktocart button dark">Xem giỏ hàng</a>*@</td>
+                            <td>@Html.ActionLink("Thanh toán", "Index", "CheckOut"@*, new { @class = "linktocart button dark" }*@)@*<a href="/checkout" class="linktocheckout button dark">Thanh toán</a>*@</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div id="site-search" class="site-nav-container" tabindex="-1">
+            <div class="site-nav-container-last">
+                <p class="title">Tìm kiếm</p>
+                <div class="search-box wpo-wrapper-search">
+                    <form action="/search" class="searchform searchform-categoris ultimate-search navbar-form">
+                        <div class="wpo-search-inner">
+                            <input type="hidden" name="type" value="product" />
+                            <input required id="inputSearchAuto" name="q" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm...">
+                        </div>
+                        <button type="submit" class="btn-search btn" id="search-header-btn">
+                            <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"><path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path><rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
+                        </button>
+                    </form>
+                    <div id="ajaxSearchResults" class="smart-search-wrapper ajaxSearchResults" style="display: none">
+                        <div class="resultsContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="site-close-handle" class="site-close-handle" aria-label="Đóng" title="Đóng">
+            <span class="hamburger-menu active" aria-hidden="true"><span class="bar animate"></span></span>
+        </button>
+    </div>
+    <!-- Tìm kiếm và Giỏ hàng End -->
+
+    <script>
+        setTimeout(function () {
+            animation_check();
+        }, 100);
+
+        function animation_check() {
+            var scrollTop = $(window).scrollTop() - 300;
+            $('.animation-tran').each(function () {
+                if ($(this).offset().top < scrollTop + $(window).height()) {
+                    $(this).addClass('active');
+                }
+            })
+        }
+        $(window).scroll(function () {
+            //setTimeout(function(){
+            animation_check();
+            //}, 500);
+        })
+    </script>
+
+</body>
+</html>

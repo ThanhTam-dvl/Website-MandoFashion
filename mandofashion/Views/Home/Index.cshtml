@@ -1,0 +1,301 @@
+﻿@model IEnumerable<mandofashion.Models.SanPham>
+
+<!-- image slide show Start -->
+<div id="home-slider">
+    <div id="homepage_slider" class="owl-carousel owl-theme">
+        <div class="item">
+            <a href="#">
+                <img title="" alt="" src="~/images/home/slideshow_1.jpg">
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img title="" alt="" src="~/images/home/slideshow_2.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+<!-- image slide show End -->
+<!-- Danh mục sản phẩm Start -->
+<div class="wrapper-home-banner-top">
+    <div class="wrapper-heading-home animation-tran text-center">
+        <div class="container-fluid">
+            <div class="site-animation">
+                <h2>
+                    <a>Danh mục sản phẩm</a>
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="list-slider-banner">
+            <div class="home-banner-pd product-resize">
+                <div class="block-banner-category image-resize">
+                    <a class="link-banner" href="#">
+                        <img src="~/images/home/dmsp1.jpg" />
+                    </a>
+                    <div class="caption_banner_slide">
+                        <h3>POLO</h3>
+                        <a class="button" href="@Url.Action("Index", "Product", new { maLoai = 1 })">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="home-banner-pd product-resize">
+                <div class="block-banner-category image-resize">
+                    <a class="link-banner" href="#">
+                        <img src="~/images/home/dmsp2.jpg" />
+                    </a>
+                    <div class="caption_banner_slide">
+                        <h3>SHIRT</h3>
+                        <a class="button" href="@Url.Action("Index", "Product", new { maLoai = 2 })">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="home-banner-pd product-resize">
+                <div class="block-banner-category image-resize">
+                    <a class="link-banner" href="#">
+                        <img src="~/images/home/dmsp3.jpg" />
+                    </a>
+                    <div class="caption_banner_slide">
+                        <h3>QUẦN ÂU</h3>
+                        <a class="button" href="@Url.Action("Index", "Product", new { maLoai = 4 })">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="home-banner-pd product-resize">
+                <div class="block-banner-category image-resize">
+                    <a class="link-banner" href="#">
+                        <img src="~/images/home/dmsp4.jpg" />
+                    </a>
+                    <div class="caption_banner_slide">
+                        <h3>BLAZER TAY LỠ</h3>
+                        <a class="button" href="@Url.Action("Index", "Product", new { maLoai = 3 })">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="home-banner-pd product-resize">
+                <div class="block-banner-category image-resize">
+                    <a class="link-banner" href="#">
+                        <img src="~/images/home/dmsp5.jpg" />
+                    </a>
+                    <div class="caption_banner_slide">
+                        <h3>T-SHIRT</h3>
+                        <a class="button" href="@Url.Action("Index", "Product", new { maLoai = 6 })">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Danh mục sản phẩm End -->
+<!-- Nhóm 1 Sản phẩm mới Start -->
+<section class="section section-collection">
+    <!--Tiêu đề SPM-->
+    <div class="wrapper-heading-home animation-tran text-center">
+        <div class="container-fluid">
+            <div class="site-animation">
+                <h2>
+                    <a href="@Url.Action("Index", "Product", new { maLoai = 2})">SẢN PHẨM MỚI 2024</a>
+                    
+                </h2>
+            </div>
+        </div>
+    </div>
+    <!--Start SPM-->
+    <div class="wrapper-collection-1">
+        <div class="container-fluid">
+            <div class="clearfix content-product-list" id="collection-slide">
+
+                @foreach (var item in Model)
+                {
+                    
+                    <div class="pro-loop animation-tran">
+                        <div class="product-block product-resize site-animation">
+                            <div class="product-img">
+                                <a href="@Url.Action("Detail", "Product", new { id = item.MaSP })" class="image-resize">
+                                    <picture>
+                                        <img class="img-loop" alt=" @item.TenSP" src="~/images/products/@item.DuongDanAnh" />
+                                    </picture>
+                                    <picture>
+                                        <img class="img-loop img-hover" alt=" @item.TenSP " src="~/images/products/@item.DuongDanAnh1" />
+                                    </picture>
+                                </a>
+
+                                <div class="pro-price-mb">
+                                    <span class="pro-price">@item.GiaBan₫</span>
+                                </div>
+                            </div>
+                            <div class="product-detail clearfix">
+                                <div class="box-pro-detail">
+                                    <h3 class="pro-name">
+                                        @Html.ActionLink(item.TenSP, "Detail", "Product", new { id = item.MaSP }, null)
+                                    </h3>
+                                    <div class="box-pro-prices">
+                                        <p class="pro-price ">
+                                            <span>@item.GiaBan₫</span>
+                                        </p>
+                                    </div>
+                                    <p>@Html.ActionLink("Thêm vào giỏ hàng", "OrderNow", "ShoppingCart", new { Id = item.MaSP }, null)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Nhóm 1 Sản phẩm mới End -->
+<!-- Image BST Start -->
+<div class="wrapper-home-banner animation-tran">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 home-banner-pd site-animation">
+                <div class="block-banner-category">
+                    <a class="link-banner" href="#">
+                        <img class="" src="~/images/home/block_home_category1.jpg" alt="BST SƠ MI ">
+                    </a>
+                    <div class="caption_banner">
+                        <span class="subtitle"></span>
+                        <h3>BST SƠ MI </h3>
+                        <a class="button" href="#">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 home-banner-pd site-animation">
+                <div class="block-banner-category">
+                    <a class="link-banner" href="#">
+                        <img class="" src="~/images/home/block_home_category2.jpg" alt="BST ÁO PHÔNG">
+                    </a>
+                    <div class="caption_banner">
+                        <span class="subtitle"></span>
+                        <h3>BST ÁO PHÔNG</h3>
+                        <a class="button" href="#">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 home-banner-pd site-animation">
+                <div class="block-banner-category">
+                    <a class="link-banner" href="#">
+                        <img class="" src="~/images/home/block_home_category3.jpg" alt="BST BLAZER DÀI TAY">
+                    </a>
+                    <div class="caption_banner">
+                        <span class="subtitle"></span>
+                        <h3>BST BLAZER DÀI TAY</h3>
+                        <a class="button" href="#">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Image BST End -->
+<!-- Nhóm 2 Sản phẩm bán chạy Start-->
+<section class="section section-collection">
+    <!--Tiêu đề SPBC-->
+    <div class="wrapper-heading-home animation-tran text-center">
+        <div class="container-fluid">
+            <div class="site-animation">
+                <h2>
+                    <a href="@Url.Action("Index" ,"Product", new { maLoai = 3})">SẢN PHẨM BÁN CHẠY</a>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <!--Start SPBC-->
+    <div class="wrapper-collection-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="clearfix content-product-list ">
+                    <!-- SPBC 1 Start -->
+                    <div class="col-md-3 col-sm-6 col-xs-6 pro-loop animation-tran">
+                        <div class="product-block product-resize site-animation">
+                            <div class="product-img">
+                                <div class="sold-out"><span>Hết hàng</span></div>
+                                <a href="#" title="Áo Phông Polo Nam Màu Trắng MANDO Tay Lỡ Cotton Cao Cấp Form Rộng Basic Unisex Thời Trang Hàn Quốc PDN122 POL001" class="image-resize">
+                                    <picture>
+                                        <img class="img-loop" alt=" Áo Phông Polo Nam Màu Trắng MANDO Tay Lỡ Cotton Cao Cấp Form Rộng Basic Unisex Thời Trang Hàn Quốc PDN122 POL001 " src="~/images/home/spbc1.jpg" />
+                                    </picture>
+                                    <picture>
+                                        <img class="img-loop img-hover" alt=" Áo Phông Polo Nam Màu Trắng MANDO Tay Lỡ Cotton Cao Cấp Form Rộng Basic Unisex Thời Trang Hàn Quốc PDN122 POL001 " src="~/images/home/spbc1.1.jpg" />
+                                    </picture>
+                                </a>
+                                <div class="button-add hidden">
+                                    <button type="submit" title="Buy now" class="action" onclick="buy_now('1102316822')">Mua ngay<i class="fa fa-long-arrow-right"></i></button>
+                                </div>
+                                <div class="pro-price-mb">
+                                    <span class="pro-price">88,000₫</span>
+                                </div>
+                            </div>
+                            <div class="product-detail clearfix">
+                                <div class="box-pro-detail">
+                                    <h3 class="pro-name">
+                                        <a href="#" title="Áo Phông Polo Nam Màu Trắng MANDO Tay Lỡ Cotton Cao Cấp Form Rộng Basic Unisex Thời Trang Hàn Quốc PDN122 POL001">
+                                            Áo Phông Polo Nam Màu Trắng MANDO Tay Lỡ Cotton Cao Cấp Form Rộng Basic Unisex Thời Trang Hàn Quốc PDN122 POL001
+                                        </a>
+                                    </h3>
+                                    <div class="box-pro-prices">
+                                        <p class="pro-price ">
+                                            <span>88,000₫</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SPBC 1 End -->
+                    <!-- SPBC 2 STart -->
+                    <div class="col-md-3 col-sm-6 col-xs-6 pro-loop animation-tran">
+                        <div class="product-block product-resize site-animation">
+                            <div class="product-img">
+                                <div class="product-sale"><span>-43%</span></div>
+                                <a href="#" title="Áo Polo Khóa Kéo Nam MANDO Chất Liệu Cá Sấu Cổ Khóa Zip Form Rộng Basic Unisex Thời Trang Hàn Quốc - POL003" class="image-resize">
+                                    <picture>
+                                        <img class="img-loop" alt=" Áo Polo Khóa Kéo Nam MANDO Chất Liệu Cá Sấu Cổ Khóa Zip Form Rộng Basic Unisex Thời Trang Hàn Quốc - POL003 " src="~/images/home/spm2.jpg" />
+                                    </picture>
+                                    <picture>
+                                        <img class="img-loop img-hover" alt=" Áo Polo Khóa Kéo Nam MANDO Chất Liệu Cá Sấu Cổ Khóa Zip Form Rộng Basic Unisex Thời Trang Hàn Quốc - POL003 " src="~/images/home/spbc2.1.jpg" />
+                                    </picture>
+                                </a>
+                                <div class="button-add hidden">
+                                    <button type="submit" title="Buy now" class="action" onclick="buy_now('1102317229')">Mua ngay<i class="fa fa-long-arrow-right"></i></button>
+                                </div>
+                                <div class="pro-price-mb">
+                                    <span class="pro-price">198,000₫</span>
+                                    <span class="pro-price-del"><del class="compare-price">350,000₫</del></span>
+                                </div>
+                            </div>
+                            <div class="product-detail clearfix">
+                                <div class="box-pro-detail">
+                                    <h3 class="pro-name">
+                                        <a href="/products/ao-polo-khoa-keo-nam-mando-chat-lieu-ca-sau-co-khoa-zip-form-rong-basic-unisex-thoi-trang-han-quoc-pol003" title="Áo Polo Khóa Kéo Nam MANDO Chất Liệu Cá Sấu Cổ Khóa Zip Form Rộng Basic Unisex Thời Trang Hàn Quốc - POL003">
+                                            Áo Polo Khóa Kéo Nam MANDO Chất Liệu Cá Sấu Cổ Khóa Zip Form Rộng Basic Unisex Thời Trang Hàn Quốc - POL003
+                                        </a>
+                                    </h3>
+                                    <div class="box-pro-prices">
+                                        <p class="pro-price highlight">
+                                            <span>198,000₫</span>
+                                            <span class="pro-price-del">
+                                                <del class="compare-price">
+                                                    350,000₫
+                                                </del>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SPBC 2 End -->
+                    <!--..................................................-->
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<!-- Nhóm 2 Sản phẩm bán chạy End -->

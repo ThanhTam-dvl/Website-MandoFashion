@@ -1,0 +1,440 @@
+﻿@using mandofashion.Models
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<input id="reloadValue" type="hidden" name="reloadValue" value="" />
+<input id="is_vietnam" type="hidden" value="true" />
+<input id="is_vietnam_location" type="hidden" value="true" />
+
+<button class="order-summary-toggle order-summary-toggle-hide">
+    <div class="wrap">
+        <div class="order-summary-toggle-inner">
+            <div class="order-summary-toggle-icon-wrapper">
+                <svg width="20" height="19" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle-icon"><path d="M17.178 13.088H5.453c-.454 0-.91-.364-.91-.818L3.727 1.818H0V0h4.544c.455 0 .91.364.91.818l.09 1.272h13.45c.274 0 .547.09.73.364.18.182.27.454.18.727l-1.817 9.18c-.09.455-.455.728-.91.728zM6.27 11.27h10.09l1.454-7.362H5.634l.637 7.362zm.092 7.715c1.004 0 1.818-.813 1.818-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817zm9.18 0c1.004 0 1.817-.813 1.817-1.817s-.814-1.818-1.818-1.818-1.818.814-1.818 1.818.814 1.817 1.818 1.817z"></path></svg>
+            </div>
+            <div class="order-summary-toggle-text order-summary-toggle-text-show">
+                <span>Hiển thị thông tin đơn hàng</span>
+                <svg width="11" height="6" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle-dropdown" fill="#000"><path d="M.504 1.813l4.358 3.845.496.438.496-.438 4.642-4.096L9.504.438 4.862 4.534h.992L1.496.69.504 1.812z"></path></svg>
+            </div>
+            <div class="order-summary-toggle-text order-summary-toggle-text-hide">
+                <span>Ẩn thông tin đơn hàng</span>
+                <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle-dropdown" fill="#000"><path d="M6.138.876L5.642.438l-.496.438L.504 4.972l.992 1.124L6.138 2l-.496.436 3.862 3.408.992-1.122L6.138.876z"></path></svg>
+            </div>
+            <div class="order-summary-toggle-total-recap" data-checkout-payment-due-target="16800000">
+                <span class="total-recap-final-price">168,000₫</span>
+            </div>
+        </div>
+    </div>
+</button>
+<!---->
+<div class="content">
+    <div class="wrap">
+
+        <!--Thông tin sản phẩm-->
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <div class="order-summary order-summary-is-collapsed">
+                    @{
+                        if (Session["Cart"] != null)
+                        {
+                            <h2 class="visually-hidden">Thông tin đơn hàng</h2>
+                            <div class="order-summary-section order-summary-section-product-list" data-order-summary-section="line-items">
+                                @foreach (var cart in (List<Cart>)Session["Cart"])
+                                {
+                                    double p = Convert.ToDouble(cart.SanPham.GiaBan);
+                                    int q = Convert.ToInt32(cart.SoLuong);
+                                    double subtotal = p * q;
+
+                                    <div class="order-summary-section order-summary-section-product-list" data-order-summary-section="line-items">
+                                        <table class="product-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"><span class="visually-hidden">Hình ảnh</span></th>
+                                                    <th scope="col"><span class="visually-hidden">Mô tả</span></th>
+                                                    <th scope="col"><span class="visually-hidden">Số lượng</span></th>
+                                                    <th scope="col"><span class="visually-hidden">Giá</span></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <tr class="product">
+                                                    <td class="product-image">
+                                                        <div class="product-thumbnail">
+                                                            <div class="product-thumbnail-wrapper">
+                                                                <img class="product-thumbnail-image" alt="@cart.SanPham.TenSP" src="~/images/products/@cart.SanPham.DuongDanAnh" />
+                                                            </div>
+                                                            <span class="product-thumbnail-quantity" aria-hidden="true">@cart.SanPham.SoLuong</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-description">
+                                                        <span class="product-description-name order-summary-emphasis">@cart.SanPham.TenSP</span>
+
+                                                    </td>
+                                                    <td class="product-quantity visually-hidden">@cart.SanPham.SoLuong</td>
+                                                    <td class="product-price">
+
+                                                        <span class="order-summary-emphasis">@Html.FormatValue(cart.SanPham.GiaBan, null)₫</span>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="order-summary-section order-summary-section-total-lines payment-lines" data-order-summary-section="payment-lines">
+                                        <table class="total-line-table">
+
+                                            <tbody>
+                                                <tr class="total-line total-line-subtotal">
+                                                    <td class="total-line-name">Tạm tính</td>
+                                                    <td class="total-line-price">
+                                                        <span class="order-summary-emphasis">
+                                                            @Html.FormatValue(subtotal, null)₫
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="total-line total-line-shipping">
+                                                    <td class="total-line-name">Phí vận chuyển</td>
+                                                    <td class="total-line-price">
+                                                        <span class="order-summary-emphasis" data-checkout-total-shipping-target="0">
+                                                            —
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                }
+                                <tfoot class="total-line-table-footer">
+                                    <tr class="total-line">
+                                        @{
+                                            List<Cart> temp = (List<Cart>)Session["Cart"];
+                                            var total = temp.Sum(x => x.SoLuong * x.SanPham.GiaBan);
+                                        }
+                                        <td class="total-line-name payment-due-label">
+                                            <span class="payment-due-label-total">Tổng cộng</span>
+                                        </td>
+                                        <td class="total-line-name payment-due">
+                                            <b class="payment-due-price" style="padding-left: 50px; ">
+                                                @Html.FormatValue(total, null)₫
+                                            </b>
+                                            <span class="checkout_version" display:none data_checkout_version="11">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+
+                            </div>
+
+                        }
+                        else
+                        {
+                            <h3>Không có sản phẩm nào để thanh toán</h3>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+
+        <!--Thông tin khách hàng-->
+        <div class="main">
+            <div class="">
+
+                <a href="/" class="logo">
+                    <h1 class="logo-text">Thời trang MANDO</h1>
+                </a>
+
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/cart">Giỏ hàng</a>
+                    </li>
+                    <li class="breadcrumb-item breadcrumb-item-current">
+                        Thông tin giao hàng
+                    </li>
+                </ul>
+
+            </div>
+            <div class="main-content">
+
+                <div id="checkout_order_information_changed_error_message" class="hidden" style="margin-bottom:15px">
+
+                    <p class="field-message field-message-error alert alert-danger">
+                        <svg x="0px" y="0px" viewBox="0 0 286.054 286.054" style="enable-background:new 0 0 286.054 286.054;" xml:space="preserve"> <g> <path style="fill:#E2574C;" d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027 c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236 c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209 S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972 c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723 c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843 C160.878,195.732,152.878,187.723,143.036,187.723z" /> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg>
+                        <span></span>
+                    </p>
+                </div>
+                <script>
+                    $("html, body").animate({
+                        scrollTop: 0
+                    }, "slow");
+                </script>
+
+
+                <div class="step">
+
+                    <div class="step-sections steps-onepage" step="1">
+
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">Thông tin giao hàng</h2>
+                            </div>
+                            <div class="section-content section-customer-information no-mb">
+
+                                <div class="fieldset">
+
+                                    <div class="field field-required  ">
+                                        <div class="field-input-wrapper">
+                                            <label class="field-label" for="billing_address_full_name">Họ và tên</label>
+                                            <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_full_name" name="billing_address[full_name]" value="" autocomplete="false" />
+                                        </div>
+                                    </div>
+
+                                    <div class="field  field-two-thirds  ">
+                                        <div class="field-input-wrapper">
+                                            <label class="field-label">Email</label>
+                                            <input autocomplete="false" placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="checkout_user_email" name="checkout_user[email]" value="" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="field field-required field-third  ">
+                                        <div class="field-input-wrapper">
+                                            <label class="field-label">Số điện thoại</label>
+                                            <input autocomplete="false" placeholder="Số điện thoại" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="15" type="tel" id="billing_address_phone" name="billing_address[phone]" value="" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="field field-required  ">
+                                        <div class="field-input-wrapper">
+                                            <label class="field-label" for="billing_address_address1">Địa chỉ</label>
+                                            <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_address1" name="billing_address[address1]" value="" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="step-footer" id="step-footer-checkout">
+
+                        <form id="form_next_step" accept-charset="UTF-8" method="post">
+                            <a href="@Url.Action("OrderSuccess", "ShoppingCart")">Hoàn tất đơn hàng</a>
+                            @*<input name="submit" type="hidden" value="">
+                            <button type="submit" class="step-footer-continue-btn btn">
+                                <a href="@Url.Action("OderSuccess", "ShoppingCart")" class="btn-content">Hoàn tất đơn hàng</a>
+                                <i class="btn-spinner icon icon-button-spinner"></i>
+                            </button>*@
+                        </form>
+                        <a class="step-footer-previous-link" href="@Url.Action("Index", "ShoppingCart")">Giỏ hàng</a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+@*<div class="content">
+
+        <div class="wrap">
+
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <div class="order-summary order-summary-is-collapsed">
+
+                        <h2 class="visually-hidden">Thông tin đơn hàng</h2>
+                        <div class="order-summary-sections">
+
+                            <div class="order-summary-section order-summary-section-product-list" data-order-summary-section="line-items">
+                                <table class="product-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><span class="visually-hidden">Hình ảnh</span></th>
+                                            <th scope="col"><span class="visually-hidden">Mô tả</span></th>
+                                            <th scope="col"><span class="visually-hidden">Số lượng</span></th>
+                                            <th scope="col"><span class="visually-hidden">Giá</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr class="product" data-product-id="1046677716" data-variant-id="1105297323">
+                                            <td class="product-image">
+                                                <div class="product-thumbnail">
+                                                    <div class="product-thumbnail-wrapper">
+                                                        <img class="product-thumbnail-image" alt="Áo Polo Nam Cổ Chữ V Không Cúc MANDO Chất Liệu Cá Sấu TC Có Hình Thêu Ngực Phong Cách Hàn Quốc POL009" src="//product.hstatic.net/1000401164/product/upload_acddc99b033d496fab37dcb020caf2f1_small.jpg" />
+                                                    </div>
+                                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
+                                                </div>
+                                            </td>
+                                            <td class="product-description">
+                                                <span class="product-description-name order-summary-emphasis">Áo Polo Nam Cổ Chữ V Không Cúc MANDO Chất Liệu Cá Sấu TC Có Hình Thêu Ngực Phong Cách Hàn Quốc POL009</span>
+
+                                            </td>
+                                            <td class="product-quantity visually-hidden">1</td>
+                                            <td class="product-price">
+                                                <span class="order-summary-emphasis">168,000₫</span>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="order-summary-section order-summary-section-total-lines payment-lines" data-order-summary-section="payment-lines">
+                                <table class="total-line-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"><span class="visually-hidden">Mô tả</span></th>
+                                            <th scope="col"><span class="visually-hidden">Giá</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="total-line total-line-subtotal">
+                                            <td class="total-line-name">Tạm tính</td>
+                                            <td class="total-line-price">
+                                                <span class="order-summary-emphasis" data-checkout-subtotal-price-target="16800000">
+                                                    168,000₫
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="total-line total-line-shipping">
+                                            <td class="total-line-name">Phí vận chuyển</td>
+                                            <td class="total-line-price">
+                                                <span class="order-summary-emphasis" data-checkout-total-shipping-target="0">
+                                                    —
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot class="total-line-table-footer">
+                                        <tr class="total-line">
+                                            <td class="total-line-name payment-due-label">
+                                                <span class="payment-due-label-total">Tổng cộng</span>
+                                            </td>
+                                            <td class="total-line-name payment-due">
+                                                <span class="payment-due-currency">VND</span>
+                                                <span class="payment-due-price" data-checkout-payment-due-target="16800000">
+                                                    168,000₫
+                                                </span>
+                                                <span class="checkout_version" display:none data_checkout_version="11">
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="">
+
+                    <a href="/" class="logo">
+                        <h1 class="logo-text">Thời trang MANDO</h1>
+                    </a>
+
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/cart">Giỏ hàng</a>
+                        </li>
+                        <li class="breadcrumb-item breadcrumb-item-current">
+                            Thông tin giao hàng
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="main-content">
+
+                    <div id="checkout_order_information_changed_error_message" class="hidden" style="margin-bottom:15px">
+
+                        <p class="field-message field-message-error alert alert-danger">
+                            <svg x="0px" y="0px" viewBox="0 0 286.054 286.054" style="enable-background:new 0 0 286.054 286.054;" xml:space="preserve"> <g> <path style="fill:#E2574C;" d="M143.027,0C64.04,0,0,64.04,0,143.027c0,78.996,64.04,143.027,143.027,143.027 c78.996,0,143.027-64.022,143.027-143.027C286.054,64.04,222.022,0,143.027,0z M143.027,259.236 c-64.183,0-116.209-52.026-116.209-116.209S78.844,26.818,143.027,26.818s116.209,52.026,116.209,116.209 S207.21,259.236,143.027,259.236z M143.036,62.726c-10.244,0-17.995,5.346-17.995,13.981v79.201c0,8.644,7.75,13.972,17.995,13.972 c9.994,0,17.995-5.551,17.995-13.972V76.707C161.03,68.277,153.03,62.726,143.036,62.726z M143.036,187.723 c-9.842,0-17.852,8.01-17.852,17.86c0,9.833,8.01,17.843,17.852,17.843s17.843-8.01,17.843-17.843 C160.878,195.732,152.878,187.723,143.036,187.723z" /> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg>
+                            <span></span>
+                        </p>
+                    </div>
+                    <script>
+                        $("html, body").animate({
+                            scrollTop: 0
+                        }, "slow");
+                    </script>
+
+                    <div class="step">
+
+                        <div class="step-sections steps-onepage" step="1">
+
+                            <div class="section">
+                                <div class="section-header">
+                                    <h2 class="section-title">Thông tin giao hàng</h2>
+                                </div>
+                                <div class="section-content section-customer-information no-mb">
+
+                                    <div class="fieldset">
+
+                                        <div class="field field-required  ">
+                                            <div class="field-input-wrapper">
+                                                <label class="field-label" for="billing_address_full_name">Họ và tên</label>
+                                                <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_full_name" name="billing_address[full_name]" value="" autocomplete="false" />
+                                            </div>
+                                        </div>
+
+                                        <div class="field  field-two-thirds  ">
+                                            <div class="field-input-wrapper">
+                                                <label class="field-label">Email</label>
+                                                <input autocomplete="false" placeholder="Email" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="email" id="checkout_user_email" name="checkout_user[email]" value="" />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="field field-required field-third  ">
+                                            <div class="field-input-wrapper">
+                                                <label class="field-label">Số điện thoại</label>
+                                                <input autocomplete="false" placeholder="Số điện thoại" autocapitalize="off" spellcheck="false" class="field-input" size="30" maxlength="15" type="tel" id="billing_address_phone" name="billing_address[phone]" value="" />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="field field-required  ">
+                                            <div class="field-input-wrapper">
+                                                <label class="field-label" for="billing_address_address1">Địa chỉ</label>
+                                                <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false" class="field-input" size="30" type="text" id="billing_address_address1" name="billing_address[address1]" value="" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        footer
+                        <div class="step-footer" id="step-footer-checkout">
+
+                            <form id="form_next_step" accept-charset="UTF-8" method="post">
+                                <input name="utf8" type="hidden" value="✓">
+                                <button type="submit" class="step-footer-continue-btn btn">
+                                    <span class="btn-content">Hoàn tất đơn hàng</span>
+                                    <i class="btn-spinner icon icon-button-spinner"></i>
+                                </button>
+                            </form>
+                            <a class="step-footer-previous-link" href="/cart">Giỏ hàng</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>*@

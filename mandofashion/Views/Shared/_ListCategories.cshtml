@@ -1,0 +1,12 @@
+﻿@using mandofashion.Models;
+
+@{
+    ProductDataBContext dbContext = new ProductDataBContext();
+    List<LoaiSP> Listcategories = dbContext.LoaiSPs.ToList();
+}
+
+@foreach (var item in Listcategories)
+{
+    <li class="active">@Html.ActionLink(item.TenLoai, "Index", "Product", new { maLoai = item.MaLoai }, null)</li>
+}
+

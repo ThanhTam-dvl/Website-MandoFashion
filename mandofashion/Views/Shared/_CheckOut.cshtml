@@ -1,0 +1,9 @@
+﻿@model IEnumerable<mandofashion.Models.SanPham>
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+@foreach (var item in Model)
+{
+    @Html.ActionLink("Thêm vào giỏ hàng", "OrderNow", "ShoppingCart", new { Id = item.MaSP }, null)
+}

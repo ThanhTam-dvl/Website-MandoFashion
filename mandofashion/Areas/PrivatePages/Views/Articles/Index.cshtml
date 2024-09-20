@@ -1,0 +1,110 @@
+﻿@using mandofashion.Models;
+@{
+    ViewBag.Title = "Index";
+    List<BaiViet> ds = ViewData["DanhSachBV"] as List<BaiViet>;
+}
+<style>
+    form {
+        display: inline;
+    }
+</style>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Danh sách các bài viết trong hệ thống</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Quản trị</a></li>
+                        <li class="breadcrumb-item active">Danh sách dài viết đã duyệt</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">DataTable with default features</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Tên bài viết</th>
+                                        <th>Ngày đăng</th>
+                                        <th>Tài khoản</th>
+                                        <th>Số lần đọc</th>
+                                        <th>Công cụ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ foreach (BaiViet i in ds)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @i.tenBV
+                                                </td>
+                                                <td>@string.Format("{0: hh:mm [dd/MM/yyyy]}", i.ngayDang) </td>
+                                                <td>@i.TaiKhoan1.hoDem @i.TaiKhoan1.tenTV</td>
+                                                <td>@i.soLanDoc</td>
+                                                <td>
+                                                    @using (Html.BeginForm("Active", "Articles", FormMethod.Post))
+                                                    {
+                                                        <input type="hidden" name="maBaiViet" value="@i.maBV" />
+                                                        <button class="btn btn-success" title="Cho phép hiển thị bài viết trên các trang công khai">@ViewBag.tdCuaNut</button>
+                                                    }
+                                                    <button class="btn btn-default" title="Cho phép sửa bài viết">Sửa nội dung</button>
+                                                    @using (Html.BeginForm("Delete", "Articles", FormMethod.Post))
+                                                    {
+                                                        <input type="hidden" name="maBaiViet" value="@i.maBV" />
+                                                        <button class="btn btn-danger" title="Xóa bài viết ...">Xóa</button>
+                                                    }
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!--scripts-->
+<script src="https://cdn.tiny.cloud/1/3otmxje9q4ejjzffnafnhmseqgntu0fzphpomkopvdljogva/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+        ]
+    });
+</script>
+<!--/.scripts-->
