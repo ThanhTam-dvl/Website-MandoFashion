@@ -1,6 +1,12 @@
-# 📚 MandoFashion - Hệ thống Quản lý Cửa hàng Thời trang Nam
+# 👔 MandoFashion - Hệ thống Quản lý Cửa hàng Thời trang Nam
 
-Website quản lý cửa hàng thời trang nam và bán hàng trực tuyến, xây dựng bằng ASP.NET MVC, C# và SQL Server.
+![ASP.NET MVC](https://img.shields.io/badge/ASP.NET_MVC-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![SQL Server](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Entity Framework](https://img.shields.io/badge/Entity_Framework-512BD4?style=for-the-badge&logo=.net&logoColor=white)
+
+**Hệ thống quản lý cửa hàng thời trang nam và bán hàng trực tuyến** - Giải pháp toàn diện cho việc vận hành và quản lý cửa hàng thời trang nam hiện đại.
 
 > **Lưu ý:** Chưa cập nhật ảnh giao diện thực tế
 
@@ -258,6 +264,8 @@ Bản quyền © 2024 Nguyễn Thành Tâm.
 
 - **Tác giả:** Nguyễn Thành Tâm
 - **Email:** nguyenthanhtam10062004@gmail.com
+- **MSSV:** 2200000922
+- **Giảng viên hướng dẫn:** ThS. Đỗ Hoàng Nam
 
 ## 🖼️ Demo ảnh
 
